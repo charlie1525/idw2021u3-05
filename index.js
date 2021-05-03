@@ -20,3 +20,12 @@ blog1.save(function(error){
     console.log('Blog saves succesfully!!');
     process.exit(0);
 }); // fin de la funcion para guardar el blog
+
+Blogs.find({},function(error,docs){
+    if(error){
+        console.log(error);
+        process.exit(1);
+    }
+    console.log('<----- Consulta general ------>');
+    console.log(docs);
+}); // fin de la funcion para buscar de forma general
