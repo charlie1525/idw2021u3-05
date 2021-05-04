@@ -57,6 +57,19 @@ Blogs.find({title:titulo},function(error,docs){
         console.log(error);
         process.exit(1);
     }
-    console.log('<----- Consulta con restricción ------>');
+    console.log('\n<----- Consulta con restricción ------>');
     console.log(docs);
 }); // fin de la funcion para buscar de forma general
+
+//  Creación de la funcion de update
+let id_Blog = '60906baa030e6d2b14b178ee';
+Blogs.update({_id: id_Blog}, {$set:{title: 'Just Another Blog'}},
+function (error,docs) {
+    if(error){
+        console.log(error);
+        process.exit(1);
+    }
+    console.log('\n<------ Update ------>');
+    console.log(docs);
+    process.exit(0)
+}); //fin del uodate por ID
