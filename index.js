@@ -8,12 +8,12 @@ mongoose.connect('mongodb://localhost:27017/eje05');
 
 var Blogs = mongoose.model('Blogs',blogSchema,'blog');
 
-// var blog1 =  new Blogs({
-//     title: 'The newest Blog ever',
-//     author: 'Carlos Fregoso',
-//     body: 'This is the first publication of the best and newest blog in the web, you can find lots of themes that I like and I´ll leave the commets open for healthy discussion',
-//     meta: {votes:10,favs:2}
-// });
+var blog1 =  new Blogs({
+    title: 'The newest Blog ever',
+    author: 'Carlos Fregoso',
+    body: 'This is the first publication of the best and newest blog in the web, you can find lots of themes that I like and I´ll leave the commets open for healthy discussion',
+    meta: {votes:10,favs:2}
+});
 
 var blog2 =  new Blogs({
     title: 'Just anotehr blog',
@@ -50,7 +50,7 @@ Blogs.find({},function(error,docs){
 }); // fin de la funcion para buscar de forma general
 
 
-let titulo = 'Just anotehr blog'
+let titulo = 'Just Another Blog'
 
 Blogs.find({title:titulo},function(error,docs){
     if(error){
@@ -72,4 +72,15 @@ function (error,docs) {
     console.log('\n<------ Update ------>');
     console.log(docs);
     process.exit(0)
-}); //fin del uodate por ID
+}); //fin del update por ID
+
+
+//Creacion del metodo par eliminar por el id
+Blogs.findByIdAndRemove({_id: id_Blog},function (error,docs){
+    if(error){
+        console.log(error);
+        process.exit(1);
+    }
+    console.log(docs);
+    process.exit(0);    
+}); //fin de la función
